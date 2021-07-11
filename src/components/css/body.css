@@ -1,0 +1,29 @@
+.body{
+    width: 22%;
+    height: 86vh;
+    background-color: #22252D;
+    border-radius: 20px;
+
+}
+
+.d-body{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 20px 20px 0px 0px;
+    width: 100%;
+    height: 30vh;
+    background-color: #22252D;
+}
+
+.buttons{
+    margin-top: 10px;
+    border-radius: 30px 30px 20px 20px;
+    width: 100%;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #2A2D37;
+}
+
