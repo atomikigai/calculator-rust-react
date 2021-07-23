@@ -24,13 +24,32 @@ const Body = () => {
         setFinalResult("");
     }
 
+    const changeNumber = () =>{
+        let lastItem = valueNum.pop();
+
+        let itemNew = "";
+
+        if(parseFloat(lastItem) > 0){
+            itemNew = lastItem * -1;
+        }
+
+        if(parseFloat(lastItem) < 0){
+            itemNew = lastItem * -1;
+        }
+
+        setvalueNum([
+            ...valueNum,
+            itemNew
+        ])
+    }
+
     const borrarNum = () =>{
         valueNum.pop();
         setvalueNum([
             ...valueNum,
 
         ])
-    }
+    } 
 
     
     const resultclick = () =>{
@@ -39,6 +58,18 @@ const Body = () => {
         valores = valores.replaceAll('=','');
         invoke('calculator', { invokeMessage: valores}).then((message) => setFinalResult(message));
     }
+
+
+    const resultPorcentaje = () =>{
+        let valores = "";
+        valores = final_result;
+
+        if(final_result !== ""){
+            invoke('porcentaje', { invokeMessage2: valores}).then((message) => setFinalResult(message));
+        }
+
+    }
+
 
 
 
@@ -74,8 +105,9 @@ const Body = () => {
                     num.map((item, index) => {
                         contador += 1
                         return <Nums key={index} borrarNum={borrarNum} 
-                                value={item} count={contador} setvalueNum={setvalueNum}
-                                valueNum={valueNum} 
+                                value={item} count={contador} changeNumber={changeNumber} 
+                                setvalueNum={setvalueNum}
+                                valueNum={valueNum} resultPorcentaje={resultPorcentaje}
                                 cleanDisplay={cleanDisplay} result={resultclick}
                         />
                     }) 

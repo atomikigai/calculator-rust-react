@@ -21,11 +21,15 @@ const Nums = (props) => {
 
     const getNumbers = (numero) =>{
 
-        if(numero !== "AC" && numero !== "⏎"){
+        if(numero !== "AC" && numero !== "⏎" && numero !== "+/-"){
             props.setvalueNum([
                 ...props.valueNum,
                 numero
             ])
+        }
+        
+        if(numero === "%"){
+            props.resultPorcentaje();
         }
 
         if(numero === "="){
@@ -41,6 +45,12 @@ const Nums = (props) => {
         if(numero === "⏎"){
             props.borrarNum();
         }
+
+        if(numero === "+/-"){
+            props.changeNumber()
+        }
+
+
 
     }
 

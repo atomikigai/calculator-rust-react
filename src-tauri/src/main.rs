@@ -9,15 +9,19 @@ fn calculator(invoke_message: String) -> String{
 
   let mut operator = String::from("");
 
-  let operators = ['+', '-', '÷', 'x'];
+  let operators = ['+', '-', '÷', 'x', '%'];
 
   let mut num1 = String::from("");
  
   let mut num2 = String::from("");
 
 
+
+
   for e in invoke_message.chars(){
 
+    println!("Valores: {}", e.to_string());
+    
       for opes in operators{
         if e == opes {
           operator = e.to_string();
@@ -59,17 +63,40 @@ fn calculator(invoke_message: String) -> String{
     // TODO ^ Try commenting out one of these arms
   };
 
+  println!("final result: {}", final_result);
+
+
   final_result.to_string().into()
+
  }else{
    "SyntaxError".into()
  }
 
+
+
+}
+
+#[tauri::command]
+fn porcentaje(invoke_message2: String) -> String{
+
+  println!("Porcentaje {}", invoke_message2);
+  let mut final_result2 = 0.0;
+
+  if(invoke_message2 != ""){
+    let numerofinal :f32 = invoke_message2.parse().unwrap();
+    final_result2 = numerofinal / 100.00;
+    return final_result2.to_string().into()
+  }else{
+    return "SyntaxError".into()
+  }
+
+  final_result2.to_string().into()
 }
 
 
 fn main() {
   tauri::Builder::default() 
-    .invoke_handler(tauri::generate_handler![calculator])
+    .invoke_handler(tauri::generate_handler![calculator, porcentaje])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
