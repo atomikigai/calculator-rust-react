@@ -43,6 +43,7 @@ fn calculator(invoke_message: String) -> String{
   }
 
 
+ if(num1 != "" && num2 != ""){
   let number1 :f32 = num1.parse().unwrap();
   let number2 :f32 = num2.parse().unwrap();
 
@@ -59,6 +60,9 @@ fn calculator(invoke_message: String) -> String{
   };
 
   final_result.to_string().into()
+ }else{
+   "SyntaxError".into()
+ }
 
 }
 

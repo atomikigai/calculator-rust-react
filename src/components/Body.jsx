@@ -9,19 +9,27 @@ import { appWindow } from '@tauri-apps/api/window'
 const Body = () => {
     
     useEffect(() => {
-        document.getElementById('titlebar-minimize').addEventListener('click', () => appWindow.minimize())
-
-        document.getElementById('titlebar-close').addEventListener('click', () => appWindow.close())
-
+        document.getElementById('titlebar-minimize').addEventListener('click', () => appWindow.minimize());
+        document.getElementById('titlebar-close').addEventListener('click', () => appWindow.close());
     }, [])
 
     const [valueNum, setvalueNum] = useState([]);
 
     const [final_result, setFinalResult] = useState("");
 
+    const [updateDisplay, setUpdateDisplay] = useState('');
+
     const cleanDisplay = () =>{
         setvalueNum([]);
         setFinalResult("");
+    }
+
+    const borrarNum = () =>{
+        valueNum.pop();
+        setvalueNum([
+            ...valueNum,
+
+        ])
     }
 
     
@@ -31,6 +39,8 @@ const Body = () => {
         valores = valores.replaceAll('=','');
         invoke('calculator', { invokeMessage: valores}).then((message) => setFinalResult(message));
     }
+
+
 
 
     let num = ['AC', '+/-', '%', '÷',
@@ -54,7 +64,8 @@ const Body = () => {
                     <i id="titlebar-close" class="fas fa-times-circle"></i>
                    
                 </div>
-                <Display value={valueNum} final_result={final_result}/>
+                <Display value={valueNum} updateDisplay={updateDisplay} 
+                        final_result={final_result}/>
             </div>
         
             <div className="buttons">
@@ -62,8 +73,10 @@ const Body = () => {
                 {
                     num.map((item, index) => {
                         contador += 1
-                        return <Nums key={index} value={item} count={contador} setvalueNum={setvalueNum}
-                            valueNum={valueNum} cleanDisplay={cleanDisplay} result={resultclick}
+                        return <Nums key={index} borrarNum={borrarNum} 
+                                value={item} count={contador} setvalueNum={setvalueNum}
+                                valueNum={valueNum} 
+                                cleanDisplay={cleanDisplay} result={resultclick}
                         />
                     }) 
                 }

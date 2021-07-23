@@ -7,9 +7,21 @@ const Nums = (props) => {
 
     const [op, setOP] = useState(false);
 
+    const changecolor = () =>{
+        let x = document.getElementById('ope-color')
+        x.className += 'op-color';
+    }
+
+    const removeClass = () =>{
+        let x = document.getElementById('ope-color')
+        x.classList.remove('op-color');
+    }
+
+    
+
     const getNumbers = (numero) =>{
 
-        if(numero !== "AC"){
+        if(numero !== "AC" && numero !== "⏎"){
             props.setvalueNum([
                 ...props.valueNum,
                 numero
@@ -17,13 +29,18 @@ const Nums = (props) => {
         }
 
         if(numero === "="){
-            props.result()
+            props.result();
+            changecolor();
         }
 
         if(numero === "AC"){
             props.cleanDisplay();
+            removeClass();
         }
-
+        
+        if(numero === "⏎"){
+            props.borrarNum();
+        }
 
     }
 

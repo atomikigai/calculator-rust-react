@@ -3,6 +3,7 @@ import './css/display.css'
 
 const Display = (props) => {
 
+
     let result = props.value.toString().replaceAll(',','');
     result = result.replaceAll('=','');
     
@@ -14,7 +15,7 @@ const Display = (props) => {
 
                 result !== "" ? (
                     <Fragment>
-                        <span className="operation">
+                        <span className="operation " id="ope-color">
                             {
                                 result
                             }
@@ -28,7 +29,11 @@ const Display = (props) => {
                         {0}
                     </span>
                 )
+            
+
             }
+
+
 
         </div>
     );
