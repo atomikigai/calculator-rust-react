@@ -27,4 +27,4 @@ npm run tauri dev
 ```
 
 ## Fotografia de la calculadora
-- [Tauri Twitter](https://twitter.com/TauriApps/status/1418627935779557377)
+- [Ver Foto](https://cloud.degoo.com/share/uTbnGwOZ2VsKuIjVWO97Cw)
