@@ -3,9 +3,17 @@ import './css/body.css'
 import Display from './Display'
 import Nums from './Nums'
 import { invoke } from '@tauri-apps/api/tauri'
+import { appWindow } from '@tauri-apps/api/window'
 
 
 const Body = () => {
+    
+    useEffect(() => {
+        document.getElementById('titlebar-minimize').addEventListener('click', () => appWindow.minimize())
+
+        document.getElementById('titlebar-close').addEventListener('click', () => appWindow.close())
+
+    }, [])
 
     const [valueNum, setvalueNum] = useState([]);
 
@@ -40,6 +48,12 @@ const Body = () => {
         <div className="body">
 
             <div className="d-body">
+                <div data-tauri-drag-region  className="menu-title">
+
+                    <i id="titlebar-minimize" class="fas fa-minus"></i>
+                    <i id="titlebar-close" class="fas fa-times-circle"></i>
+                   
+                </div>
                 <Display value={valueNum} final_result={final_result}/>
             </div>
         

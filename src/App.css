@@ -1,7 +1,8 @@
 body{
   margin: 0;
   padding: 0;
-  background-color:#fff;
+  background: transparent;
+  border-radius: 0px 0px 25px 25px;
 }
 
 .App{
@@ -11,4 +12,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  background: transparent;
+  border-radius: 0px 0px 25px 25px;
 }
