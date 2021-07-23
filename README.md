@@ -28,3 +28,6 @@ npm run tauri dev
 
 ## Fotografia de la calculadora
 - [Ver Foto](https://cloud.degoo.com/share/uTbnGwOZ2VsKuIjVWO97Cw)
+
+![Alt text](https://cloud.degoo.com/share/uTbnGwOZ2VsKuIjVWO97Cw)
+
